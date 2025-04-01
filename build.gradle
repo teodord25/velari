@@ -89,7 +89,21 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+tasks.register('copyNativeLib', Copy) {
+    from "$projectDir/rust/orbit_engine/target/release/liborbit_engine.so"
+    into "$buildDir/libs"
+}
+
+test.dependsOn 'copyNativeLib'
+
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.1'
+
     // Specify the version of Minecraft to use.
     // Depending on the plugin applied there are several options. We will assume you applied the userdev plugin as shown above.
     // The group for userdev is net.neoforged, the module name is neoforge, and the version is the same as the neoforge version.
