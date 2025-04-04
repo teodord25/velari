@@ -8,8 +8,7 @@ pub extern "system" fn Java_com_github_teodord25_velari_OrbitEngine_checkBridge(
     env: JNIEnv,
     _class: JClass,
 ) -> jstring {
-    let output = env
-        .new_string("Hello from Rust!")
-        .expect("Couldn't create Java string!");
-    output.into_raw()
+    env.new_string("Hello from Rust!")
+       .expect("Couldn't create Java string!")
+       .into_raw()
 }
