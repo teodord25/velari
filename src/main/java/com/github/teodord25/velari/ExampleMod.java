@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.github.teodord25.velari;
 
 import org.slf4j.Logger;
 

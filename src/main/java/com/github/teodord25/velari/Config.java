@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.github.teodord25.velari;
 
 import java.util.List;
 import java.util.Set;
