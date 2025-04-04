@@ -49,6 +49,11 @@
             echo "Java, Rust, Gradle, and JDTLS are ready."
             echo "Use './gradlew runClient' to test the mod."
 
+            alias gs='git status'
+            alias gc='git commit'
+            alias ga='git add'
+            alias gp='git push'
+
             export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
               pkgs.xorg.libX11
               pkgs.xorg.libXext
