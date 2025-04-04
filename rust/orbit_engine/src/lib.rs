@@ -4,7 +4,7 @@ use jni::sys::jstring;
 
 /// This is the function Java will call
 #[unsafe(no_mangle)]
-pub extern "system" fn Java_com_velari_HelloNative_getMessage(
+pub extern "system" fn Java_com_velari_OrbitEngine_checkBridge(
     env: JNIEnv,
     _class: JClass,
 ) -> jstring {
