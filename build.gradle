@@ -89,9 +89,24 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+tasks.register('buildRust', Exec) {
+    workingDir "$projectDir/rust/orbit_engine"
+    commandLine 'cargo', 'build', '--release'
+}
+
 tasks.register('copyNativeLib', Copy) {
+    dependsOn 'buildRust'
     from "$projectDir/rust/orbit_engine/target/release/liborbit_engine.so"
     into "$buildDir/libs"
+}
+
+tasks.named('build').configure {
+    dependsOn 'copyNativeLib'
+}
+
+tasks.named('test').configure {
+    dependsOn 'buildRust'
+    dependsOn 'copyNativeLib'
 }
 
 test.dependsOn 'copyNativeLib'
