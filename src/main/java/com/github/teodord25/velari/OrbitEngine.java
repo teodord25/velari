@@ -15,4 +15,6 @@ public class OrbitEngine {
 
     // NOTE: only used for checking if the JNI bridge is working
     public static native String checkBridge();
+
+    public static native Double computeDistance(double x, double y, double z);
 }
