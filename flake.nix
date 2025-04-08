@@ -16,7 +16,7 @@
 
           buildInputs = [
             # Java dev env
-            pkgs.openjdk17
+            pkgs.openjdk21
             pkgs.gradle
             pkgs.jdt-language-server
 
