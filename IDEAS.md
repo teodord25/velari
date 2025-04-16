@@ -1,0 +1,5 @@
+- ISRU by mining ores n shit and then just cooking them or something
+- Tech tree that helps guide players towards finding out shit like ISRU
+- Science collection and shit like in KSP
+- Bases and so on
+- Satellites
