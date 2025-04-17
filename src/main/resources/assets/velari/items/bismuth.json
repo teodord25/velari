@@ -1,0 +1,9 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "velari:item/bismuth"
+    },
+    "properties": {
+        "hand_animation_on_swap": false
+    }
+}

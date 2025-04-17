@@ -9,6 +9,9 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import com.github.teodord25.velari.block.ModBlocks;
+import com.github.teodord25.velari.item.ModItems;
+
+import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -19,19 +22,24 @@ public class Velari {
     public static final String MODID = "velari";
 
     public Velari(IEventBus modBus, ModContainer modContainer) {
+        ModBlocks.BLOCKS.register(modBus);
+        ModItems.ITEMS.register(modBus);
+
         NeoForge.EVENT_BUS.register(this);
 
         modBus.addListener(this::commonSetup);
         modBus.addListener(this::addCreative);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-
-        ModBlocks.BLOCKS.register(modBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) { }
 
-    private void addCreative(BuildCreativeModeTabContentsEvent event) { }
+    private void addCreative(BuildCreativeModeTabContentsEvent event)
+    {
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
+            event.accept(ModItems.BISMUTH);
+    }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) { }
