@@ -1,12 +1,11 @@
 package com.github.teodord25.velari.block;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import com.github.teodord25.velari.Velari;
 import com.github.teodord25.velari.item.ModItems;
 
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -22,24 +21,20 @@ public class ModBlocks {
         BLOCKS.register(eventBus);
     }
 
-    public static final DeferredBlock<Block> BISMUTH_BLOCK = registerBlock(
+    public static final DeferredBlock<Block> BISMUTH_BLOCK = registerBlockAndItsItem(
         "bismuth_block",
-        () -> new Block(
-            BlockBehaviour.Properties.of()
+        props -> new Block(
+            props
             .strength(4f)
             .requiresCorrectToolForDrops()
             .sound(SoundType.AMETHYST)
         ));
 
 
-    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
-        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
-    }
-
-    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    private static <B extends Block> DeferredBlock<B> registerBlockAndItsItem(String name, Function<BlockBehaviour.Properties, B> block) {
+        DeferredBlock<B> deferredBlock = BLOCKS.registerBlock(name, block);
+        ModItems.ITEMS.registerSimpleBlockItem(name, deferredBlock);
+        return deferredBlock;
     }
 
     // NOTE: used for simple blocks that use Block::new
