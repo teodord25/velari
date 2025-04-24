@@ -7,11 +7,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;
 
-@EventBusSubscriber(modid = Velari.MODID, bus = Bus.MOD)
-public class ModEventHandler {
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void test() {
-
-    }
-}
-
+// @EventBusSubscriber(modid = Velari.MOD_ID, bus = Bus.MOD)
+// public class ModEventHandler {
+//     @SubscribeEvent(priority = EventPriority.NORMAL)
+//     public static void test() {}
+// }
+//

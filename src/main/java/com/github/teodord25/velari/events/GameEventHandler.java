@@ -10,7 +10,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 
-@EventBusSubscriber(modid = Velari.MODID, bus = Bus.GAME)
+@EventBusSubscriber(modid = Velari.MOD_ID, bus = Bus.GAME)
 public class GameEventHandler {
     // NOTE: handlers can one of 5 priority settings, they will be executed
     // from highest to lowest

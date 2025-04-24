@@ -7,10 +7,8 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber(modid = Velari.MODID, value = Dist.CLIENT)
-public class PhysicalClientEventHandler {
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void test() {
-        // rendering stuff here
-    }
-}
+// @EventBusSubscriber(modid = Velari.MOD_ID, value = Dist.CLIENT)
+// public class PhysicalClientEventHandler {
+//     @SubscribeEvent(priority = EventPriority.NORMAL)
+//     public static void test() { // rendering stuff here }
+// }

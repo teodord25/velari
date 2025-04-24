@@ -6,9 +6,9 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber(modid = Velari.MODID)
-public class LogicalServerEventHandler {
-    // NOTE: handlers can one of 5 priority settings, they will be executed from highest to lowest
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void test() { }
-}
+// @EventBusSubscriber(modid = Velari.MOD_ID)
+// public class LogicalServerEventHandler {
+//     // NOTE: handlers can one of 5 priority settings, they will be executed from highest to lowest
+//     @SubscribeEvent(priority = EventPriority.NORMAL)
+//     public static void test() { }
+// }
