@@ -6,7 +6,7 @@
       "biome": "minecraft:plains",
       "layers": [
         {
-          "block": "minecraft:dirt",
+          "block": "velari:tom_trtan",
           "height": 64
         }
       ],
