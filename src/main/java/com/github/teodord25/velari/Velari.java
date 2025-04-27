@@ -1,19 +1,56 @@
 package com.github.teodord25.velari;
 
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import com.github.teodord25.velari.block.ModBlocks;
+import com.github.teodord25.velari.item.ModItems;
 
-@Mod(Velari.MOD_ID)
-public final class Velari {
+import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+
+@Mod("velari")
+public class Velari {
     public static final String MOD_ID = "velari";
 
-    public Velari(IEventBus modEventBus) {
-        modEventBus.addListener(this::commonSetup);
+    public Velari(IEventBus modBus, ModContainer modContainer) {
+        ModBlocks.BLOCKS.register(modBus);
+        ModItems.ITEMS.register(modBus);
+
+        NeoForge.EVENT_BUS.register(this);
+
+        modBus.addListener(this::commonSetup);
+        modBus.addListener(this::addCreative);
+
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        // initialise networking, config, etc.
+    private void commonSetup(final FMLCommonSetupEvent event) { }
+
+    private void addCreative(BuildCreativeModeTabContentsEvent event)
+    {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
+            event.accept(ModItems.BISMUTH);
+
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
+            event.accept(ModBlocks.BISMUTH_BLOCK);
+    }
+
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) { }
+
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) { }
     }
 
     /* ---------------------------------------------------------
