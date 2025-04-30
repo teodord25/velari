@@ -23,3 +23,8 @@ mixins="velari.mixins.json"
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="immersive-portals-neo"
+    mandatory=true
+    afterModIds=[ ]
