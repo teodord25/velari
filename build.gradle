@@ -39,6 +39,9 @@ repositories {
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
+    compileOnly   "maven.modrinth:cloth-config:${cloth_config_version}"
+    localRuntime  "maven.modrinth:cloth-config:${cloth_config_version}"
+
     compileOnly "maven.modrinth:immersive-portals-neoforge:${immersive_portals_version}"
     localRuntime  "maven.modrinth:immersive-portals-neoforge:${immersive_portals_version}"
 
