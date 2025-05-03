@@ -53,6 +53,7 @@
             alias gc='git commit'
             alias ga='git add'
             alias gp='git push'
+            alias log='cat runs/client/logs/latest.log | wl-copy'
 
             export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
               pkgs.xorg.libX11
