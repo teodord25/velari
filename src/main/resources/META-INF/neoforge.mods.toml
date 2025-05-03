@@ -25,6 +25,7 @@ mixins="velari.mixins.json"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="immersive-portals-neo"
+    modId="immersive_portals_core"
     mandatory=true
     afterModIds=[ ]
+    versionRange="[6.0.6]"
