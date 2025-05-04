@@ -8,10 +8,18 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
 import com.github.teodord25.velari.block.ModBlocks;
 import com.github.teodord25.velari.item.ModItems;
+import com.github.teodord25.velari.world.gen.PlanetChunkGenerator;
+import com.mojang.serialization.MapCodec;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -21,11 +29,20 @@ import net.neoforged.neoforge.common.NeoForge;
 public class Velari {
     public static final String MOD_ID = "velari";
 
+    public static final DeferredRegister<MapCodec<? extends ChunkGenerator>> CHUNK_GENS =
+            DeferredRegister.create(Registries.CHUNK_GENERATOR, MOD_ID);
+
+    public static final Supplier<MapCodec<? extends ChunkGenerator>> PLANET_GEN =
+            CHUNK_GENS.register("planet_chunk_generator", () -> PlanetChunkGenerator.CODEC);
+
+
     public Velari(IEventBus modBus, ModContainer modContainer) {
         ModBlocks.BLOCKS.register(modBus);
         ModItems.ITEMS.register(modBus);
 
         NeoForge.EVENT_BUS.register(this);
+
+        CHUNK_GENS.register(modBus);
 
         modBus.addListener(this::commonSetup);
         modBus.addListener(this::addCreative);
