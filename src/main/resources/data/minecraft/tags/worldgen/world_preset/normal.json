@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:normal",
+    "minecraft:superflat",
+    "velari:mars"
+  ]
+}

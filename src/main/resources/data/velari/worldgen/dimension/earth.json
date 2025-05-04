@@ -1,0 +1,12 @@
+{
+  "type": "velari:planet",
+  "generator": {
+    "type": "velari:planet_chunk_generator",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:plains"
+    }
+  },
+  "dimension_type": "velari:planet"
+}
+

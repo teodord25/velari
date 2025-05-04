@@ -1,4 +1,7 @@
 {
 	"item.velari.bismuth": "Bismuth",
-	"block.velari.bismuth": "Block of Bismuth"
+	"block.velari.bismuth": "Block of Bismuth",
+	"generator.velari.earth": "Earth-like Planet",
+	"generator.velari.mars":  "Mars-like Planet",
+	"generator.velari.planet":  "Planet"
 }
